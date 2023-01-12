@@ -13,8 +13,10 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author monica
+ * @author MC
+ * @version 12/01/23
  */
+
 public class Scrittore implements Runnable{
 
     String nomeFile;
@@ -27,7 +29,9 @@ public class Scrittore implements Runnable{
     public void run() {
         scrivi();
     }
-    
+    /**
+     * Scrive un file di testo usando la classe BufferedWriter
+     */
     public void scrivi(){
         BufferedWriter br=null;
         
@@ -39,9 +43,7 @@ public class Scrittore implements Runnable{
             br.write("File in output");
             br.write("\n\r");
             //3) svuoto il buffer e salvo nel file i dati
-            br.flush();
-          
-              
+            br.flush();         
         } catch (IOException ex) {
             Logger.getLogger(Scrittore.class.getName()).log(Level.SEVERE, null, ex);
         }
