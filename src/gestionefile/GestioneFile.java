@@ -21,6 +21,7 @@ public class GestioneFile {
         String passKey = o.nextLine();
         lettore.start();
         //2)ELABORAZIONE
+        //inserire username e password
         
         //3) SCRITTURA
         Scrittore scrittore = new Scrittore("output.csv");
