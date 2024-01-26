@@ -2,7 +2,7 @@ package gestionefile;
 
 /**
  *
- * @author MC
+ * @author kelvin isibor
  * @version 12/01/23
  */
 import java.util.Scanner;
