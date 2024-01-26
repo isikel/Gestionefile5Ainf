@@ -5,28 +5,38 @@ package gestionefile;
  * @author kelvin isibor
  * @version 12/01/23
  */
-import java.util.Scanner;
+   import java.util.Scanner;
 public class GestioneFile {
+ 
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-         Scanner o = new Scanner(System.in);
+        Scanner ins = new Scanner(System.in);
         //1)LETTURA
         Lettore lettore = new Lettore("user.json");
-        System.out.println("Inserire username:");
-        String userName = o.nextLine();
-        System.out.println("\n Inserire password:");
-        String passKey = o.nextLine();
         lettore.start();
         //2)ELABORAZIONE
-        //inserire username e password
+        System.out.println("inserisci username:");
+        String userName = ins.nextLine();
+        System.out.println("inserisci password:");
+        String password = ins.nextLine();
         
         //3) SCRITTURA
         Scrittore scrittore = new Scrittore("output.csv");
         Thread threadScrittore = new Thread(scrittore);
         threadScrittore.start();
+        Scrittore.scriviPsv();
+        FileInputStream inputStream = new FileInputStream(inFile);
+        FileOutputStream outputStream = new FileInputStream(outFile);
+        byte[] buffer = new byte[1024];
+        int bytesLetti;
+        while ((bytesLetti = inputStream.read(buffer)) != -1){
+            outputStream.write(buffer, 0, bytesLetti);
+        }
+        inputStream.close();
+        
     }
     
 }
