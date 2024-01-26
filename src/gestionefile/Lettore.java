@@ -1,4 +1,4 @@
-package gestionefile;
+package gestionefile5Ainf;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -38,8 +38,11 @@ public class Lettore extends Thread{
         }
     }
     
-
+    
+    @Override
     public void run(){
         leggi();
     }
+}
+
 }
