@@ -1,4 +1,4 @@
-package gestionefile;
+package gestionefile5Ainf;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -15,9 +15,16 @@ import java.util.logging.Logger;
 public class Scrittore implements Runnable{
 
     String nomeFile;
+    String utente;
+    String password;
     
     public Scrittore(String nomeFile){
         this.nomeFile = nomeFile;
+    }
+    public Scrittore(String nomeFile, String utente, String password){
+        this.nomeFile = nomeFile;
+        this.utente = utente;
+        this.password = password;
     }
     
     @Override
@@ -36,6 +43,32 @@ public class Scrittore implements Runnable{
                     new FileWriter(nomeFile));
             //2) scrivo nel buffer
             br.write("File in output");
+            br.write("\n\r");
+            //3) svuoto il buffer e salvo nel file i dati
+            br.flush();         
+        } catch (IOException ex) {
+            Logger.getLogger(Scrittore.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            if (br!=null)
+                try {
+                    //4)chiudo lo stream in uscita
+                    br.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Scrittore.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                
+        }
+    }
+        public void scrivi1(){
+        BufferedWriter br=null;
+        
+        try {
+            //1) apro il file
+            br = new BufferedWriter(
+                    new FileWriter(nomeFile));
+            //2) scrivo nel buffer
+            br.write(utente +";"+ password);
             br.write("\n\r");
             //3) svuoto il buffer e salvo nel file i dati
             br.flush();         
