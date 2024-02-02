@@ -17,11 +17,17 @@ public class GestioneFile {
         //1)LETTURA
         Lettore lettore = new Lettore("user.json");
         lettore.start();
+       try{
+          lettore join();
+       } catch (interruptedException ex) {
+            Logger.getLogger(GrstioneFile.class.getName());
+            }
         //2)ELABORAZIONE
+       Scanner scanner = new Scanner(System.in);
         System.out.println("inserisci username:");
-        String userName = ins.nextLine();
+        String userName = scanner.nextLine();
         System.out.println("inserisci password:");
-        String password = ins.nextLine();
+        String password = scanner.nextLine().toupperCase();
         
         //3) SCRITTURA
         Scrittore scrittore = new Scrittore("output.csv");
